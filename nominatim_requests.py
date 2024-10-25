@@ -16,7 +16,6 @@ def queryLocation():
         queryLocation()
         return
     else:
-    # if len(queryresult) != 1:
         if len(queryresult) == 0:
             print("Location could not be found!")
         else:
@@ -25,8 +24,7 @@ def queryLocation():
                 print(f"{index}: {entry.get('display_name')}, {entry.get('lat')}, {entry.get('lon')}")
             location = queryresult[int(input("Chosen location (enter number): "))]
 
-    print(location)
     lat = round(float(location.get('lat')), 2)
     lon = round(float(location.get('lon')), 2)
-    print(lat, lon)
+
     return (lat, lon)   

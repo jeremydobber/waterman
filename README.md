@@ -6,6 +6,8 @@ This program's purpose is to assist rainwater management in households.
 
 ## Inputs
 
+Users are allowed to provide a timeframe. If exceeding the data available on the CDS, the default 2015-2099 is enforced.
+
 A location has to be provided.
 
 The program retrieves climatological data for the given location.  
@@ -23,18 +25,20 @@ To be implemented in GUI, unavailable in the first version :
     - dishwasher ?
     - washing machine ?
 
-> Should we enable users to chose a timeframe or enforce the default 2015-2099 ?
 
 ## Output
 
 The program calculates the available cumulative rainwater stocks (over a year ? with weekly or daily precision ?).
+
 - If the user provided a size for an already existing container, the stocks are capped at the given capacity.
 
 The program subtracts from this stock the water needed by the houshold (with weekly or daily precision ?).
+
 - If the user provided a size for an already existing container, the program has to "free" space in the container for refill.
 
 
 The program draws charts showing the fluctuation of stocks and marks the periods where availablity falls below the estimated consumption.
+
 - If the user did NOT provide a container size, or, in any case, the program also calculates an ideal container size given the estimated consumption, the available roof size, and the given location.
 
 > The idea behind using a weekly scale is that we can assume that all the equipments of a household will get to be used within a week, which wouldn't be the case for a daily scale. In the first version however, a monthly scale could be used because excludes decisions such as what to do with remaining days of a year that do not add up to a whole week. Another solution would be to work on the whole period starting from the day the program is run or a user selected date.
