@@ -113,7 +113,7 @@ def cmip6(lat, lon, years):
     }
 
     client = cdsapi.Client()
-    client.retrieve(dataset, request).download()
+    filepath = client.retrieve(dataset, request).download()
 
     # return the file path...
-    return
+    return filepath
