@@ -1,10 +1,11 @@
 import requests
-import requests_cache
 
-def queryLocation():
-    query = str(input("Location: "))
+"""
+    This file asks the user to enter a location, searches for it, asks for confirmation and returns coordinates.
+    Interaction is through the Terminal.
+"""
 
-    # requests_cache.install_cache(cache_name='location_cache', backend='sqlite', expire_after=3600)
+def queryLocation(query):
     url = "https://nominatim.openstreetmap.org/search"
     payload = {'q': query, 'format': 'json'}
     headers= {'user-agent': 'eautarkos/0.0.1'}
@@ -12,17 +13,21 @@ def queryLocation():
     queryresult = response.json()
 
     if response.status_code != requests.codes.ok:
-        print("Lookup failed, try again.")
+        print("The server did not respond.")
+        raise ConnectionError
+    
+    if len(queryresult) == 0:
+        print("Location could not be found!")
         queryLocation()
-        return
-    else:
-        if len(queryresult) == 0:
-            print("Location could not be found!")
-        else:
-            print("The following location(s) have been found for your request. Please confirm yours.")
-            for entry, index in zip(queryresult, range(len(queryresult))):
-                print(f"{index}: {entry.get('display_name')}, {entry.get('lat')}, {entry.get('lon')}")
-            location = queryresult[int(input("Chosen location (enter number): "))]
+
+    return queryresult
+
+def selectLocation(queryresult):
+
+    print("The following location(s) have been found for your request. Please confirm yours.")
+    for entry, index in zip(queryresult, range(len(queryresult))):
+        print(f"{index}: {entry.get('display_name')}")
+    location = queryresult[int(input("Chosen location (enter number): "))]
 
     lat = round(float(location.get('lat')), 2)
     lon = round(float(location.get('lon')), 2)

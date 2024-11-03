@@ -1,3 +1,14 @@
 cdsapi>=0.7.2
 requests
 requests-cache
+pandas
+xarray
+numpy
+dash
+plotly
+flask
+flask-wtf
+flask-sqlalchemy
+sqlalchemy
+psycopg2
+folium

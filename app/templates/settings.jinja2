@@ -1,0 +1,23 @@
+{% extends "layout.jinja2" %} {% block main %}
+<div>
+  <h1>Settings</h1>
+
+  {% if form %}
+  <form method="POST" action="{{ url_for('settings') }}">
+    <fieldset class="form-field">
+      {{ form.storage_size.label }} {{ form.storage_size }}
+    </fieldset>
+
+    <fieldset class="form-field">
+      {{ form.roof_size.label }} {{ form.roof_size }}
+    </fieldset>
+
+    <fieldset class="form-field">
+      {{ form.people.label }} {{ form.people }}
+    </fieldset>
+
+    {{ form.submit }}
+  </form>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layout.jinja2" %} {% block main %} {{res}}
+<form action="">
+  <label for="storage_size">Storage tank size &lpar;cubic metres&rpar;</label>
+  <input type="number" id="storage_size" />
+  <label for="roof_size">Land surface of collecting roof&lpar;s&rpar; &lpar;square
+    metres&rpar;</label>
+  <input type="number" id="roof_size" />
+  <label for="people">Number of people in the household</label>
+  <input type="number" id="people" />
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.jinja2" %} 
+
+{% block main %}
+    {% if form %}
+      <h2 class="title">Location</h2>
+
+      <form method="POST" action="{{ url_for('location') }}">
+        <fieldset class="form-field">
+          {{ form.location.label }} {{ form.location(size=20) }}
+        </fieldset>
+
+        {{ form.submit }}
+      </form>
+    {% endif %}
+
+    {% if res %}
+      <form method="POST" action="{{ url_for('weather_data')}}">
+        <select name="location_selection">
+          {% for loc in res %}
+            <option value="{{ loc }}" >{{ loc. display_name }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Select" />
+      </form>
+    {% endif %}
+
+{% endblock %}
